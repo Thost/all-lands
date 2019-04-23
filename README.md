@@ -1,4 +1,4 @@
 # all-lands
 
-Stand boundaries generated from lidar
-data-driven
+Stand boundaries generated from lidar 
+data-driven, human-used

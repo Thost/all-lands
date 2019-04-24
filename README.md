@@ -1,4 +1,4 @@
-# all-lands
+# All-lands
 
 Stand boundaries generated from lidar  
 data-driven, human-used
@@ -17,4 +17,4 @@ For each height strata (z2, z5, z10, z15, z20)
 3. polyMerge.v1 - merge shapefile tiles into one  
   Merge overlapping polygons  
   Dissolve  
-Final step: Flatten height strata to single layer
+4. Final step: Flatten height strata to single layer

@@ -7,8 +7,8 @@ data-driven, human-used
 
 For each height strata (z2, z5, z10, z15, z20)  
 1. LASboundary - generate shapefile boundary  
-  *Concave Hull - concavity 6 m  
-  *Buffered 20 m  
+  Concave Hull - concavity 6 m  
+  Buffered 20 m  
 2. polyMorph.v1 - clean up shapefile edges 
   Dissolve  
   Remove donut polygons  
@@ -17,4 +17,5 @@ For each height strata (z2, z5, z10, z15, z20)
 3. polyMerge.v1 - merge shapefile tiles into one  
   Merge overlapping polygons  
   Dissolve  
-4. Final step: Flatten height strata to single layer
+4. Final step: Flatten height strata to database
+

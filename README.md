@@ -17,5 +17,11 @@ For each height strata (z2, z5, z10, z15, z20)
 3. polyMerge.v1 - merge shapefile tiles into one  
   Merge overlapping polygons  
   Dissolve  
-4. Final step: Flatten height strata to database
+4. Polygon flattening -  top-down layer stacking of height layers  
+  Add field “z strata” 2,5,10,15,20  
+  Polygon to raster  
+  Raster layer stacking, keep maximum value  
+  Raster to polygon  
+  Eliminate slivers (Select <5000 m2 then Eliminate)  
+
 

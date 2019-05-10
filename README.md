@@ -9,8 +9,10 @@ For each height strata (z2, z5, z10, z15, z20)
 1. LASboundary - generate shapefile boundary  
   Concave Hull - concavity 20 m  
   Buffered 20 m  
-2. polyDissolve.v1 - clean up shapefile edges 
-  Dissolve  
+  *parallel*
+2. polyDissolve.v1 - clean up shapefile edges  
+  Dissolve on tiles
+  *parallel*
 3. polyMerge.v3 - merge shapefile tiles into one  
   Merge overlapping polygons  
   Remove donut polygons  

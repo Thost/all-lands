@@ -1,5 +1,5 @@
-# Polygon merging
-# Trevor Host, 4/24/2019
+# Polygon merging SIMPLE
+# Trevor Host, 05/08/2019
 
 # Import arcpy module
 import arcpy
@@ -12,7 +12,8 @@ start_time = time.time()
 
 # pass input and output file names 
 inFile = sys.argv[1]
-outFile = sys.argv[2]
+strata = sys.argv[2]
+outFile = sys.argv[3]
 
 #inFile = "C:\Users\hostx009\Documents\temp"
 #outFile = "C:\\Users\\hostx009\\Documents\\temp\\temp.shp"
@@ -28,41 +29,32 @@ temp6 = "C:\\Users\\hostx009\\Documents\\ArcGIS\\Default1.gdb\\polyMerge_temp6"
 temp7 = "C:\\Users\\hostx009\\Documents\\ArcGIS\\Default1.gdb\\polyMerge_temp7"
 
 arcpy.env.workspace = inFile
-List = arcpy.ListFeatureClasses()
-
-# Dissolve each tile AS OUTPUT FROM LASTOOLS, merging first will cause errors in the output polygons, dissolve needs to be the first step
-for fc in List:
-    arcpy.Dissolve_management(fc, os.path.join(inFile, os.path.splitext(fc)[0] + "_clean.shp"), "", "", "SINGLE_PART", "DISSOLVE_LINES")
-
 List = arcpy.ListFeatureClasses("*clean.shp")
+
 # Process: Merge
 arcpy.Merge_management(List,temp1)
 
-# Process: Select
-arcpy.Select_analysis(temp1, temp2, "Shape_area>1000")
-
-# Process: Dissolve
-arcpy.Dissolve_management(temp2, temp3, "", "", "SINGLE_PART", "DISSOLVE_LINES")
-
 # Process: Eliminate Polygon Part
-arcpy.EliminatePolygonPart_management(temp3, temp4, "AREA", "5000 SquareMeters", "", "CONTAINED_ONLY")
+arcpy.EliminatePolygonPart_management(temp1, temp2, "AREA", "5000 SquareMeters", "", "CONTAINED_ONLY")
 
-# Process: Select
-arcpy.Select_analysis(temp4, temp5, "Shape_area>5000")
+# Process: add z field
+arcpy.AddField_management(temp2, "z", "LONG", "", "", "", "", "NULLABLE", "NON_REQUIRED", "")
 
-# Process: Dissolve
-arcpy.Dissolve_management(temp5, outFile, "", "", "SINGLE_PART", "DISSOLVE_LINES")
+# Process: Calculate Field
+arcpy.CalculateField_management(temp2, "z", strata, "VB", "")
 
-# Process: Delete
+# Process: Polygon to raster
+arcpy.PolygonToRaster_conversion(temp2, "z", outFile, "CELL_CENTER", "NONE", "1")
+
+# # Process: Delete
 arcpy.Delete_management(temp1, "")
 arcpy.Delete_management(temp2, "")
-arcpy.Delete_management(temp3, "")
-arcpy.Delete_management(temp4, "")
-arcpy.Delete_management(temp5, "")
-arcpy.Delete_management(temp6, "")
-arcpy.Delete_management(temp7, "")
+# arcpy.Delete_management(temp3, "")
+# arcpy.Delete_management(temp4, "")
+# arcpy.Delete_management(temp5, "")
+# arcpy.Delete_management(temp6, "")
+# arcpy.Delete_management(temp7, "")
 
 # report time
-elapsed_time = time.time() - start_time
-print elapsed_time
-
+elapsed_min = (time.time() - start_time)/60
+print elapsed_min

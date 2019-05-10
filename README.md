@@ -17,9 +17,10 @@ For each height strata (z2, z5, z10, z15, z20)
   Add z field and populate
   polygon to raster
 4. Polygon flattening -  top-down layer stacking of height layers  
-  Raster layer stacking, keep maximum value 
+  layer stacking  
+  Mosaic to new raster, keep maximum  
 5. Clean up
-  focal statistics - 10x10 majority filter
-  Raster to polygon   
+  focal statistics - 10x10 majority filter  
+  Raster to polygon    
 
 

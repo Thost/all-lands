@@ -10,8 +10,21 @@ For each height strata (z2, z5, z10, z15, z20)
   Concave Hull - concavity 20 m  
   Buffered 20 m  
   *parallel*
+```cmd  
+:: where 'z' is an integer height strata and %LAZ% is the directory path containing the point cloud tiles
+  lasboundary 
+    -i %LAZ%\*.laz 
+    -concavity 20 
+    -keep_z_above %z% 
+    -disjoint 
+    -holes 
+    -odix _c20z%z% 
+    -drop_classification 17 
+    -buffered 20 
+    -odir result\z%z%
+```
 2. polyDissolve.v1 - clean up shapefile edges  
-  Dissolve on tiles
+  Dissolve on tiles  
   *parallel*
 3. polyMerge.v3 - merge shapefile tiles into one  
   Merge overlapping polygons  

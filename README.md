@@ -4,6 +4,14 @@ Stand boundaries generated from lidar
 data-driven, human-used
 
 # Workflow
+Initial point cloud normalization
+LASheight: Normalize point cloud by ground elevation, z values = height above ground
+```cmd
+lasheight -i *.laz -replace_z -class 2 8 -olaz -odix _z -cores 15
+```
+-replace_z option
+On-the-fly buffered 5 m to avoid edge effects
+
 
 For each height strata (z2, z5, z10, z15, z20)  
 1. LASboundary - generate shapefile boundary  

@@ -11,7 +11,8 @@ For each height strata (z2, z5, z10, z15, z20)
   Buffered 20 m  
   *parallel*
 ```cmd  
-:: where 'z' is an integer height strata and %LAZ% is the directory path containing the point cloud tiles
+:: where %z% is an integer height strata
+:: and %LAZ% is the directory path containing the point cloud tiles
   lasboundary 
     -i %LAZ%\*.laz 
     -concavity 20 

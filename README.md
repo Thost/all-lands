@@ -43,8 +43,9 @@ For each height strata (z2, z5, z10, z15, z20)
 4. Polygon flattening -  top-down layer stacking of height layers  
   layer stacking  
   Mosaic to new raster, keep maximum  
-5. Clean up
+5. Clean up  
   focal statistics - 10x10 majority filter  
-  Raster to polygon    
+  Raster to polygon  
+  Eliminate polygon part 99 percent
 
 

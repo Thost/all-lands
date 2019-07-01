@@ -7,7 +7,7 @@ data-driven, human-used
 Initial point cloud normalization
 LASheight: Normalize point cloud by ground elevation, z values = height above ground
 ```cmd
-lasheight -i *.laz -replace_z -class 2 8 -olaz -odix _z -cores 15
+lasheight -i *.laz -replace_z -buffered 5 -class 2 8 -olaz -odix _z -cores 15
 ```
 -replace_z option
 On-the-fly buffered 5 m to avoid edge effects

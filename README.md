@@ -51,8 +51,6 @@ For each height strata (z2, z5, z10, z15, z20)
   Raster to polygon  
   Eliminate polygon part 99 percent
 7. Attribution  
-  Calculating canopy metrics (full list below)  
+  Calculating canopy metrics 
   MRFD yr_onset - Zonal statistics to table: Majority and Count  
   Join tables to polygon by OBJECTID  
-
-
